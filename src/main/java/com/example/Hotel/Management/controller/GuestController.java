@@ -28,6 +28,14 @@ public class GuestController {
         return guestService.getGuestById(guestId);
     }
 
+    @PutMapping("/update_guest/{guestId}")
+    public Guest updateGuest(@PathVariable("guestId") int guestId,@RequestBody Guest guest){
+        return guestService.updateGuest(guestId,guest);
+    }
 
+    @DeleteMapping("delete_guest/{guestId}")
+    public void deleteGuest(@PathVariable int guestId){
+         guestService.deleteGuest(guestId);
+    }
 
 }

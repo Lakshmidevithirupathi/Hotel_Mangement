@@ -11,4 +11,9 @@ public interface GuestRepository {
     ArrayList<Guest> getAllGuests();
 
      Guest getGuestById(int guestId);
+
+     Guest updateGuest(int guestId,Guest guest);
+
+     void deleteGuest(int guestId);
+
 }

@@ -31,9 +31,9 @@ public class Guest {
 //    @JsonManagedReference
 //    private List<Booking> bookings;
 
-//    @ManyToOne
-//    @JoinColumn(name = "roomid")
-//    private Room room;
+    @ManyToOne
+    @JoinColumn(name = "roomid")
+    private Room room;
 
 
     public int getGuestId(){
@@ -89,6 +89,12 @@ public class Guest {
 //        this.bookings=bookings;
 //    }
 
+    public Room getRoom(){
+        return room;
+    }
 
+    public void setRoom(Room room){
+        this.room=room;
+    }
 
 }

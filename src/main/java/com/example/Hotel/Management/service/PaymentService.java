@@ -7,8 +7,9 @@ import com.example.Hotel.Management.repository.BookingJpaRepository;
 import com.example.Hotel.Management.repository.PaymentJpaRepository;
 import com.example.Hotel.Management.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,18 @@ public class PaymentService implements PaymentRepository {
         List<Payment> paymentList=paymentJpaRepository.findAll();
         ArrayList<Payment> payments=new ArrayList<>(paymentList);
         return payments;
+    }
+
+    @Override
+    public void deletePayment(int paymentId){
+        try {
+            paymentJpaRepository.deleteById(paymentId);
+        }
+        catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+        throw new ResponseStatusException(HttpStatus.NO_CONTENT);
     }
 
 }

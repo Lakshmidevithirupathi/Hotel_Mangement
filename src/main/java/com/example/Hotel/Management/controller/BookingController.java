@@ -43,39 +43,10 @@ public class BookingController {
         return ResponseEntity.ok(guests);
     }
 
-
-
-
-
-//
-//    @GetMapping("/availability/{roomId}"){
-//    public boolean isRoomAvailable(@PathVariable("roomId") int roomId,LocalDate checkInDate,LocalDate checkOutDate){
-//        return bookingService.isRoomAvailable(roomId,checkInDate,checkOutDate);
-//
-//
-//    }
-
-//    @PostMapping
-//    public ResponseEntity<String> bookRoom(@RequestParam int roomId,
-//                                           @RequestParam LocalDate checkInDate,
-//                                           @RequestParam LocalDate checkOutDate,
-//                                           @RequestParam LocalDate bookingDate,
-//                                           @RequestParam String status,
-//                                           @RequestParam double totalAmount) {
-//        String result = bookingService.bookRoom(roomId, checkInDate, checkOutDate, bookingDate,status,totalAmount);
-//        if ("Room booked successfully".equals(result)) {
-//            return new ResponseEntity<>(result, HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
-//        }
-//    }
-
-//
     @PostMapping("/bookings")
     public String bookRoom(@RequestBody Room room){
         return  bookingService.bookRoom(room);
     }
-
 
 
 

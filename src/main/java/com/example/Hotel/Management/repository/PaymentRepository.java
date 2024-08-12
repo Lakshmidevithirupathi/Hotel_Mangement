@@ -13,4 +13,6 @@ public interface PaymentRepository {
     Payment updatePayment(int bookingId, Payment payment);
 
     ArrayList<Payment> getAllPayements();
+
+    void deletePayment(int paymentId);
 }

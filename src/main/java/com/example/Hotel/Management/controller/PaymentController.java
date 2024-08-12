@@ -33,5 +33,8 @@ public class PaymentController {
     }
 
 
-
+    @DeleteMapping("delete_payment/{paymentId}")
+    public void deletePayment(@PathVariable("paymentId") int paymentId){
+        paymentService.deletePayment(paymentId);
+    }
 }

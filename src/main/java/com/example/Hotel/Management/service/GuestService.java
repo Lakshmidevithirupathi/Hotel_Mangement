@@ -42,5 +42,46 @@ public class GuestService implements GuestRepository {
 
     }
 
+    @Override
+    public Guest updateGuest(int guestId,Guest guest){
+        Guest newGuest = guestJpaRepository.findAll().get(guestId);
+        try {
+            if (guest.getFirstName() != null) {
+                newGuest.setFirstName(guest.getFirstName());
+            }
+
+            if(guest.getLastName() != null){
+                newGuest.setLastName(guest.getLastName());
+            }
+            if(guest.getEmail() != null){
+                newGuest.setEmail(guest.getEmail());
+            }
+
+            if(guest.getEmail() != null){
+                newGuest.setEmail(guest.getEmail());
+            }
+            if(guest.getAddress() != null){
+                newGuest.setAddress(guest.getAddress());
+            }
+        }catch (Exception e){
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+        return guestJpaRepository.save(newGuest);
+
+    }
+
+    @Override
+    public void deleteGuest(int guestId){
+        try{
+            guestJpaRepository.deleteById(guestId);
+
+        }
+        catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+
+    }
 
 }
